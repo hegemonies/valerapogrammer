@@ -49,4 +49,62 @@ class Valera
 
     @money += number
   end
+
+  def go_to_work
+    if @mana >= 50
+      puts 'I too drunk to work'
+    elsif @fatigue >= 10
+      puts 'What do we say work? Not today!!!'
+    else
+      add_cheerfulness(-10)
+      add_mana(-30)
+      add_money(100)
+      add_fatigue(70)
+    end
+  end
+
+  def contemplate_nature
+    add_cheerfulness(1)
+    add_mana(-10)
+    add_fatigue(10)
+  end
+
+  def drink_and_watch
+    add_cheerfulness(-1)
+    add_mana(30)
+    add_fatigue(10)
+    add_health(-5)
+    add_money(-20)
+  end
+
+  def go_to_bar
+    add_cheerfulness(1)
+    add_mana(60)
+    add_fatigue(40)
+    add_health(-10)
+    add_money(-100)
+  end
+
+  def drink_with_marginals
+    add_cheerfulness(5)
+    add_health(-80)
+    add_mana(90)
+    add_fatigue(80)
+    add_money(-150)
+  end
+
+  def sing_in_subway
+    add_cheerfulness(1)
+    add_mana(10)
+    add_money(10)
+    add_money(50) if @mana > 40 and @mana < 70
+    add_fatigue(20)
+  end
+
+  def just_sleep
+    add_health(90) if @mana < 30
+    add_cheerfulness(-3) if @mana > 70
+    add_mana(-50)
+    add_fatigue(-70)
+  end
 end
