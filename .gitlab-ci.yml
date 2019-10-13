@@ -2,8 +2,14 @@ image: wannabefro/ruby-rspec
 
 stages:
   - rspec
+  - rubocop
 
 rspec:
   stage: rspec
   script:
     - rspec src/spec/*_spec.rb
+
+rubocop:
+  stage: rubocop
+  script:
+    - rubocop
