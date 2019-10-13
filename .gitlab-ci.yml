@@ -1,4 +1,4 @@
-image: unibeautify/rubocop
+image: meltwater/rspec
 
 stages:
   - rspec
