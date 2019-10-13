@@ -1,4 +1,6 @@
+# frozen_string_literal: true
+
 # Valera gemfile
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 gem 'rspec', '~> 3.6'
