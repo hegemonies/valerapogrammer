@@ -17,4 +17,3 @@ describe Valera do
     end
   end
 end
-

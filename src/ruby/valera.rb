@@ -65,4 +65,12 @@ class Valera
     add_fatigue(80)
     add_money(-150)
   end
+
+  def sing_in_subway
+    add_cheerfulness(1)
+    add_mana(10)
+    add_money(10)
+    add_money(50) if @mana > 40 and @mana < 70
+    add_fatigue(20)
+  end
 end
