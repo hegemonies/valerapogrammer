@@ -49,4 +49,12 @@ class Valera
 
     @money += number
   end
+
+  def go_to_bar
+    add_cheerfulness(1)
+    add_mana(60)
+    add_fatigue(40)
+    add_health(-10)
+    add_money(-100)
+  end
 end
