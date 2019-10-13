@@ -30,8 +30,3 @@ class ConsoleRender
     puts
   end
 end
-
-begin
-  valera = Valera.new(0, 0, 0, 0, 0)
-  ConsoleRender.new.output_stats(valera)
-end
