@@ -1,9 +1,17 @@
+# frozen_string_literal: true
+
 require './valera'
 
 class ConsoleRender
+
+  def output_welcome
+    text = "Welcome to Valera Pogrammer"
+    puts text
+  end
+
   def output_help
     puts "To init game from config file use next command:"
-    puts "\t"
+    puts "\t" # todo: to write here help info
   end
 
   def output_actions
@@ -14,6 +22,7 @@ class ConsoleRender
     puts "5. Drink with marginals"
     puts "6. Sing in subway"
     puts "7. Just sleep"
+    puts "8. what is happening here?!"
   end
 
   def output_stats(valera)
@@ -29,4 +38,5 @@ class ConsoleRender
     return gets.chomp.to_i
     puts
   end
+
 end
