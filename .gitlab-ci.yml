@@ -1,4 +1,4 @@
-image: wannabefro/ruby-rspec
+image: meltwater/rspec
 
 stages:
   - rspec
