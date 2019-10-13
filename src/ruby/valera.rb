@@ -57,4 +57,12 @@ class Valera
     add_health(-10)
     add_money(-100)
   end
+
+  def drink_with_marginals
+    add_cheerfulness(5)
+    add_health(-80)
+    add_mana(90)
+    add_fatigue(80)
+    add_money(-150)
+  end
 end
