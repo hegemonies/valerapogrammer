@@ -1,4 +1,4 @@
-image: uzyexe/serverspec
+image: meltwater/rspec
 
 stages:
   - rspec
