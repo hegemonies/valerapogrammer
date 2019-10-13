@@ -73,4 +73,11 @@ class Valera
     add_money(50) if @mana > 40 and @mana < 70
     add_fatigue(20)
   end
+
+  def just_sleep
+    add_health(90) if @mana < 30
+    add_cheerfulness(-3) if @mana > 70
+    add_mana(-50)
+    add_fatigue(-70)
+  end
 end
