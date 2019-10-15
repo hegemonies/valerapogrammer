@@ -52,8 +52,7 @@ class Game
   end
 
   def action_in_process
-    count_times = Random.rand(5)
-    for i in 1..count_times
+    Random.rand(5).times do
       sleep(1)
       print "."
     end

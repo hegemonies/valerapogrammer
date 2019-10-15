@@ -5,13 +5,13 @@ require_relative '../../src/ruby/valera'
 
 describe Valera do
   describe '#add_mana' do
-    subject { described_class.new(0, 0, 0, 0, 0) }
+    subject { described_class.new(0, 0, 0, 0, 0).add_mana(value) }
+
 
     context 'regular add' do
-      it 'add 50' do
-        subject.add_mana(50)
-        expect(subject.mana).to eql(50)
-      end
+      let(:value) { 50 }
+      it { is_expected.to be_a? Valera }
+      it { expect(subject.mana).to eq 50 }
     end
 
     context 'over add' do

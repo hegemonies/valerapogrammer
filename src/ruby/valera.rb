@@ -2,9 +2,9 @@
 
 # Valera
 class Valera
-  attr_reader :health, :mana, :cheerfulness, :fatigue, :money
+  attr_accessor :health, :mana, :cheerfulness, :fatigue, :money
 
-  def initialize(health, mana, cheerfulness, fatigue, money)
+  def initialize(health: 0, mana: 0, cheerfulness: 0, fatigue: 0, money: 0)
     @health = health
     @mana = mana
     @cheerfulness = cheerfulness
@@ -12,94 +12,44 @@ class Valera
     @money = money
   end
 
-  def add_health(number)
-    return @health = 0 if (@health + number).negative?
-
-    return @health = 100 if @health + number > 100
-
-    @health += number
+  def health=(number)
+    return @health = 0 if number.negative?
+    return @health = 100 if number > 100
+    @health = number
+    self
   end
 
-  def add_mana(number)
-    return @mana = 0 if (@mana + number).negative?
-
-    return @mana = 100 if @mana + number > 100
-
-    @mana += number
+  def mana=(number)
+    return @mana = 0 if number.negative?
+    return @mana = 100 if number > 100
+    @mana = number
+    self
   end
 
-  def add_cheerfulness(number)
-    return @cheerfulness = -10 if @cheerfulness + number < -10
-
-    return @cheerfulness = 10 if @cheerfulness + number > 10
-
-    @cheerfulness += number
+  def cheerfulness=(number)
+    return @cheerfulness = -10 if number < -10
+    return @cheerfulness = 10 if number > 10
+    @cheerfulness = number
+    self
   end
 
-  def add_fatigue(number)
-    return @fatigue = 0 if (@fatigue + number).negative?
-
-    return @fatigue = 100 if @fatigue + number > 100
-
-    @fatigue += number
+  def fatigue=(number)
+    return @fatigue = 0 if @fatigue.negative?
+    return @fatigue = 100 if @fatigue > 100
+    @fatigue = number
+    self
   end
 
-  def add_money(number)
-    return @money = 0 if (@money + number).negative?
-
-    @money += number
+  def money=(number)
+    return @money = 0 if @money.negative?
+    @money = number
+    self
   end
 
-  def go_to_work
-    if @mana >= 50
-      puts 'I too drunk to work'
-    elsif @fatigue >= 10
-      puts 'What do we say work? Not today!!!'
-    else
-      add_cheerfulness(-10)
-      add_mana(-30)
-      add_money(100)
-      add_fatigue(70)
-    end
-  end
 
-  def contemplate_nature
-    add_cheerfulness(1)
-    add_mana(-10)
-    add_fatigue(10)
-  end
 
-  def drink_and_watch
-    add_cheerfulness(-1)
-    add_mana(30)
-    add_fatigue(10)
-    add_health(-5)
-    add_money(-20)
-  end
 
-  def go_to_bar
-    add_cheerfulness(1)
-    add_mana(60)
-    add_fatigue(40)
-    add_health(-10)
-    add_money(-100)
-  end
 
-  def drink_with_marginals
-    add_cheerfulness(5)
-    add_health(-80)
-    add_mana(90)
-    add_fatigue(80)
-    add_money(-150)
-  end
-
-  def sing_in_subway
-    add_cheerfulness(1)
-    add_mana(10)
-    add_money(10)
-    add_money(50) if @mana > 40 and @mana < 70
-    add_fatigue(20)
-  end
 
   def just_sleep
     add_health(90) if @mana < 30
