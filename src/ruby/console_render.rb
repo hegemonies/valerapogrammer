@@ -51,6 +51,7 @@ class ConsoleRender
              "\e[33m#{cheerfulness}\e[0m " +
              "\e[35m#{fatigue}\e[0m " +
              "\e[32m#{money}\e[0m)"
+
   end
 
   def input_action

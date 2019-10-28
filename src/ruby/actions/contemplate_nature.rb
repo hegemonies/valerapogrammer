@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
-# Action valera go to bar
+# Action valera contemplate nature
 class ContemplateNature
-  def exec(valera)
-    valera.cheerfulness=(valera.cheerfulness + 1)
-            .mana(valera.mana - 10)
-            .fatigue(valera.fatigue + 10)
+  def do(valera)
+    ValeraBuilder.build do |builder|
+      builder.set_cheerfulness(valera.cheerfulness + 1)
+      builder.set_mana(valera.mana - 10)
+      builder.set_fatigue(valera.fatigue + 10)
+    end
   end
 end

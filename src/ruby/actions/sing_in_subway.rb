@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
-# Action valera go to bar
+# Action valera sing in subway
 class SingInSubway
-  def exec(valera)
-    valera.cheerfulness=(valera.cheerfulness + 1)
-            .mana=(valera.mana + 10)
-            .money=(valera.money + 10)
-            .fatigue=(valera.fatigue + 20)
-    valera.money=(valera.money + 50) if @mana > 40 and @mana < 70
+  def do(valera)
+    ValeraBuilder.build do |builder|
+      builder.set_cheerfulness(valera.cheerfulness + 1)
+      builder.set_mana(valera.mana + 10)
+      builder.set_money(valera.money + 10)
+      builder.set_fatigue(valera.fatigue + 20)
+      builder.set_money(valera.money + 50) if @mana > 40 and @mana < 70
+    end
   end
 end

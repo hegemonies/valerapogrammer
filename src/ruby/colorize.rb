@@ -2,7 +2,7 @@
 
 # Colorize text
 class Colorize
-  def do(color_code, text)
-    return "\e[#{color_code}m#{text}\e[0m"
+  def self.do(color_code, text)
+    "\e[#{color_code}m#{text}\e[0m"
   end
 end

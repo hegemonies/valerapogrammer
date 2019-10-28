@@ -1,13 +1,32 @@
+# frozen_string_literal: true
+
 require './console_render'
 require './valera'
 
+# Main GAME class
 class Game
   attr :console, :valera
   def initialize
     @console = ConsoleRender.new
     @console.output_welcome
 
-    @valera = Valera.new(health=100, mana=0, cheerfulness=0, fatigue=0, money=200)
+    @valera = ValeraBuilder.build do |builder|
+      builder.set_health 100
+      builder.set_mana 0
+      builder.set_cheerfulness 0
+      builder.set_fatigue 0
+      builder.set_money 0
+    end
+  end
+
+  def start
+    begin
+      loop next_step != false
+    end
+    rescue => detail
+      puts "Sorry, buddy, this is GAME OVER :("
+      # print detail.backtrace.join("\n")
+    end
   end
 
   def next_step

@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
-# Action valera go to bar
-class DringAndWatch
-  def exec(valera)
-    valera.cheerfulness=(valera.cheerfulness - 1)
-            .mana=(valera.mana + 30)
-            .fatigue=(valera.fatigue + 10)
-            .health=(valera.health - 5)
-            .money=(valera.money - 20)
+# Action valera drink and watch
+class DrinkAndWatch
+  def do(valera)
+    ValeraBuilder.build do |builder|
+      builder.set_cheerfulness(valera.cheerfulness - 1)
+      builder.set_mana(valera.mana + 30)
+      builder.set_fatigue(valera.fatigue + 10)
+      builder.set_health(valera.health - 5)
+      builder.set_money(valera.money - 20)
+    end
   end
 end

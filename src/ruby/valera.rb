@@ -1,16 +1,8 @@
 # frozen_string_literal: true
 
-# Valera
+# just Valera
 class Valera
   attr_accessor :health, :mana, :cheerfulness, :fatigue, :money
-
-  def initialize(health: 0, mana: 0, cheerfulness: 0, fatigue: 0, money: 0)
-    @health = health
-    @mana = mana
-    @cheerfulness = cheerfulness
-    @fatigue = fatigue
-    @money = money
-  end
 
   def health=(number)
     return @health = 0 if number.negative?
@@ -34,27 +26,15 @@ class Valera
   end
 
   def fatigue=(number)
-    return @fatigue = 0 if @fatigue.negative?
-    return @fatigue = 100 if @fatigue > 100
+    return @fatigue = 0 if number.negative?
+    return @fatigue = 100 if number > 100
     @fatigue = number
     self
   end
 
   def money=(number)
-    return @money = 0 if @money.negative?
+    return @money = 0 if number.negative?
     @money = number
     self
-  end
-
-
-
-
-
-
-  def just_sleep
-    add_health(90) if @mana < 30
-    add_cheerfulness(-3) if @mana > 70
-    add_mana(-50)
-    add_fatigue(-70)
   end
 end
