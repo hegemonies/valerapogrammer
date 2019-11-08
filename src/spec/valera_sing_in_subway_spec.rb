@@ -6,7 +6,7 @@ require_relative '../../src/ruby/valera'
 describe Valera do
   describe '#sing_in_subway' do
     context 'not drunk' do
-      subject { described_class.new(health=100, mana=0, cheerfulness=0, fatigue=0, money=200) }
+      subject { described_class.new(health = 100, mana = 0, cheerfulness = 0, fatigue = 0, money = 200) }
 
       it 'sing' do
         subject.sing_in_subway
@@ -19,7 +19,7 @@ describe Valera do
     end
 
     context 'drunk' do
-      subject { described_class.new(health=100, mana=50, cheerfulness=0, fatigue=0, money=200) }
+      subject { described_class.new(health = 100, mana = 50, cheerfulness = 0, fatigue = 0, money = 200) }
 
       it 'sing' do
         subject.sing_in_subway

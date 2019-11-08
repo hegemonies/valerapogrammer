@@ -5,7 +5,7 @@ require_relative '../../src/ruby/valera'
 
 describe Valera do
   describe '#drink_with_marginals' do
-    subject { described_class.new(health=100, mana=0, cheerfulness=0, fatigue=0, money=200) }
+    subject { described_class.new(health = 100, mana = 0, cheerfulness = 0, fatigue = 0, money = 200) }
 
     it 'just drink' do
       subject.drink_with_marginals

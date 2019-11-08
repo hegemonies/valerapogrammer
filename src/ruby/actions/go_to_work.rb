@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require '../actions/simulate_action'
+
 # Action valera go to work
 class GoToWork
-  def do(valera)
+  def self.do(valera)
     if valera.mana >= 50
       puts 'I too drunk to work'
       valera
@@ -10,6 +12,7 @@ class GoToWork
       puts 'What do we say work? Not today!!!'
       valera
     else
+      SimulateAction.do
       ValeraBuilder.build do |builder|
         builder.set_cheerfulness(valera.cheerfulness - 10)
         builder.set_mana(valera.mana - 30)

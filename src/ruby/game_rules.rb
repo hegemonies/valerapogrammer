@@ -3,7 +3,8 @@
 # Handle game rules
 class GameRules
   def check_state_valera(valera)
-    raise 'Valera died' if valera.health <= 0
+    raise 'Valera died' if valera.health <= 0 || valera.cheerfulness <= -10
+
     puts 'Valera are like a glass' if valera.mana <= 10
     puts 'Valera is too drunk' if valera.mana > 70
     puts 'Valera is sad' if valera.cheerfulness <= 0

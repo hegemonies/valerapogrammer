@@ -2,14 +2,19 @@
 
 require './console_render'
 require './valera'
+require '../ruby/game_rules'
 
 # Main GAME class
 class Game
-  attr :console, :valera
+  attr_reader :console, :valera, :game_rules
+
   def initialize
     @console = ConsoleRender.new
-    @console.output_welcome
+    @console.print_welcome
+    @game_rules = GameRules.new
+  end
 
+  def default
     @valera = ValeraBuilder.build do |builder|
       builder.set_health 100
       builder.set_mana 0
@@ -17,64 +22,48 @@ class Game
       builder.set_fatigue 0
       builder.set_money 0
     end
+    self
   end
 
   def start
     begin
-      loop next_step != false
+      while next_step != false
+      end
     end
-    rescue => detail
-      puts "Sorry, buddy, this is GAME OVER :("
-      # print detail.backtrace.join("\n")
-    end
+  rescue StandardError => e
+    puts 'Sorry, buddy, this is GAME OVER :('
+    # print detail.backtrace.join("\n")
   end
 
   def next_step
-    @console.output_stats(@valera)
-    @console.output_actions
-    action = @console.input_action
-    if action == 1
-      print "Valera go to work "
-      action_in_process
-      valera.go_to_work
-    elsif action == 2
-      print "Valera see of a natural "
-      action_in_process
-      valera.contemplate_nature
-    elsif action == 3
-      print "Valera drink wino and see serials "
-      action_in_process
-      valera.drink_and_watch
-    elsif action == 4
-      print "Valera go to bar "
-      action_in_process
-      valera.go_to_bar
-    elsif action == 5
-      print "Valera go drink with marginals "
-      action_in_process
-      valera.drink_with_marginals
-    elsif action == 6
-      print "Valera sing in the subway "
-      action_in_process
-      valera.sing_in_subway
-    elsif action == 7
-      print "Valera sleep "
-      action_in_process
-      valera.just_sleep
-    elsif action == 8
-      @console.output_help
-      return true
-    elsif action == 9
-      @console.say_bye
-      return false
-    end
+    @game_rules.check_state_valera @valera
+    @console.print_stats @valera
+    @console.print_actions
+    process_action
   end
 
-  def action_in_process
-    Random.rand(5).times do
-      sleep(1)
-      print "."
+  def process_action
+    action = @console.input_action
+    case action
+    when Action::GO_TO_WORK
+      @valera = GoToWork.do @valera
+    when Action::CONTEMPLATE_NATURE
+      @valera = ContemplateNature.do @valera
+    when Action::DRINK_AND_WATCH
+      @valera = DrinkAndWatch.do @valera
+    when Action::GO_TO_BAR
+      @valera = GoToBar.do @valera
+    when Action::DRINK_WITH_MARGINALS
+      @valera = DrinkWithMarginals.do @valera
+    when Action::SING_IN_SUBWAY
+      @valera = SingInSubway.do @valera
+    when Action::JUST_SLEEP
+      @valera = JustSleep.do @valera
+    when Action::HELP
+      @console.print_help
+    when Action::QUIT
+      @console.say_bye
+      false
     end
-    puts
   end
 end

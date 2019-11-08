@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require '../ruby/valera'
 
 # Valera builder
@@ -33,7 +34,5 @@ class ValeraBuilder
     @valera.money = money
   end
 
-  def valera
-    @valera
-  end
+  attr_reader :valera
 end
