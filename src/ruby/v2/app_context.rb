@@ -3,7 +3,7 @@
 class AppContext
   attr_reader :valera, :actions_container, :prev_data
 
-  def initialize(valera:, actions_container:)
+  def initialize(valera:, actions_container:, prev_data:)
     @valera = valera
     @actions_container = actions_container
     @prev_data = prev_data

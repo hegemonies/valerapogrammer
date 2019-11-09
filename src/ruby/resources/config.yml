@@ -19,3 +19,32 @@
       field: fun
       operator: '+'
       value: 20
+-
+  before_text: Go to work
+  after_text: Borning routin
+  conds:
+    -
+      field: mana
+      operator: '<'
+      value: 50
+    -
+      field: fatigue
+      operator: '<'
+      value: 10
+  effects:
+    -
+      field: cheerfulness
+      operator: '-'
+      value: 5
+    -
+      field: mana
+      operator: '-'
+      value: 30
+    -
+      field: money
+      operator: '+'
+      value: 100
+    -
+      field: fatigue
+      operator: '+'
+      value: 70
