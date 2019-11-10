@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Action
-  class Cond
+  class Conds
     attr_accessor :field, :operator, :value
 
     def initialize(field:, operator:, value:)
@@ -11,8 +11,8 @@ class Action
     end
 
     def valid?(valera)
-      actiual_value = valera.send field
-      actiual_value.send operator, value
+      actual_value = valera.send field
+      actual_value.send operator, value
     end
   end
 end

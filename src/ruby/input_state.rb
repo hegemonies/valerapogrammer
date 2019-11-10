@@ -9,8 +9,8 @@ class InputAction < AppStates.Base
   end
 
   def render
-    IOAdapter.write 'Select action:'
     @menu.render
+    IOAdapter.write 'Select action:'
   end
 
   def next
@@ -25,11 +25,18 @@ class InputAction < AppStates.Base
  
   def build_next_state(action)
     if action.is_a?(Action)
-      ApplyAction.new(AppContext.new(
+      context = AppContext.new(
           valera: app_context.valera,
           actions_container: app_context.actions_container,
           prev_data: action
-      ))
+      )
+      if action.is_a?(LoadState)
+        LoadState.new(context)
+      elsif action.is_a?(SaveState)
+        SaveState.new(context)
+      else
+        ApplyAction.new(context)
+      end
     else
       "AppStates::#{action}".constantize
     end

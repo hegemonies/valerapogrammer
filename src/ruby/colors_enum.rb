@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Enum of the colors
+# Enum of the color codes
 module Colors
   RED = 31
   GREEN = 32
