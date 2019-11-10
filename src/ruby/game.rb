@@ -26,7 +26,6 @@ class Game
     rescue => detail
       puts "Sorry, buddy, this is GAME OVER :("
       # print detail.backtrace.join("\n")
-    end
   end
 
   def next_step
@@ -68,13 +67,5 @@ class Game
       @console.say_bye
       return false
     end
-  end
-
-  def action_in_process
-    Random.rand(5).times do
-      sleep(1)
-      print "."
-    end
-    puts
   end
 end

@@ -3,6 +3,7 @@
 # Action valera sleep
 class JustSleep
   def do(valera)
+    SimulateAction.do
     ValeraBuilder.build do |builder|
       builder.set_health(valera.health + 90) if valera.mana < 30
       builder.set_cheerfulness(valera.cheerfulness - 3) if valera.mana > 70

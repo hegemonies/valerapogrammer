@@ -10,6 +10,7 @@ class GoToWork
       puts 'What do we say work? Not today!!!'
       valera
     else
+      SimulateAction.do
       ValeraBuilder.build do |builder|
         builder.set_cheerfulness(valera.cheerfulness - 10)
         builder.set_mana(valera.mana - 30)

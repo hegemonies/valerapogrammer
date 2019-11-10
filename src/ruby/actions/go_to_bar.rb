@@ -3,6 +3,7 @@
 # Action valera go to bar
 class GoToBar
   def do(valera)
+    SimulateAction.do
     ValeraBuilder.build do |builder|
       builder.set_cheerfulness(valera.cheerfulness + 1)
       builder.set_mana(valera.mana + 60)

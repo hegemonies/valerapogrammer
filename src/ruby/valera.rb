@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# just Valera
+# Describe Valera model
 class Valera
   attr_accessor :health, :mana, :cheerfulness, :fatigue, :money
 
