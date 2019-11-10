@@ -19,7 +19,7 @@ class ApplyAction < AppStates.Base
   private
 
   def build_next_state
-    if @app_context.valera.dead?
+    if @app_context.valera.died?
       GameOver.new(AppContext.new(
           valera: @app_context.valera,
           actions_container: @app_context.actions_container,

@@ -1,12 +1,17 @@
 # frozen_string_literal: true
 
+require './io_adapter'
+require './colorize'
+require './colors_enum'
+require './item'
+
 class Menu
   def initialize(app_context)
     @app_context = app_context
   end
 
   def items
-    @items ||= app_context
+    @items ||= @app_context
      .available_actions
      .map { |action| Item.new(action: action, title: action.before_text) }
      .concat([

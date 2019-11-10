@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+require './action_container'
+require 'yaml'
+require './action'
+require './conds'
+
 class ConfigLoader
   def initialize(file)
     @file = file
@@ -25,7 +30,7 @@ class ConfigLoader
   end
 
   def build_cond(data)
-    Action::Cond.new field: data['field'],
+    Action::Conds.new field: data['field'],
                      operator: data['operator'],
                      value: data['value']
   end

@@ -12,7 +12,7 @@ class Valera
     self.fatigue = fatigue
   end
 
-  def dead?
+  def died?
     health <= 0 || cheerfulness <= -10
   end
 
