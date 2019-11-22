@@ -11,7 +11,9 @@ class Action
     end
 
     def execute(valera)
-      valera.send("#{field}=", next_value(valera.send(field)))
+      # valera.send("#{field}=", next_value(valera.send(field)))
+      valera.send("#{field}=", eval("#{String.const_get("valera.#{field}")} #{operator} #{value}"))
+      # valera.send("#{field}=", valera.send("#{field}", "#{operator} #{value}"))
     end
 
     private

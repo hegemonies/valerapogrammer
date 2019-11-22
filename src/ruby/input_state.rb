@@ -24,14 +24,14 @@ module AppStates
     end
 
     def next
-      action_number = IOAdapter.read
+      action_number = 0
 
       return RenderError.new(AppContext.new(
           valera: @app_context.valera,
           actions_container: @app_context.actions_container,
           prev_data: Colorize.do(Colors::RED, "Error action number #{action_number}.")
       )) unless is_number? action_number
-  
+
       menu_item = @menu.items[action_number.to_i]
 
       puts "#{menu_item.action} #{menu_item.title}"
