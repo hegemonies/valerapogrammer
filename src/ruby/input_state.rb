@@ -19,15 +19,19 @@ module AppStates
       IOAdapter.write ':) '
     end
 
+    def is_number?(val)
+      val.to_f.to_s == val.to_s || val.to_i.to_s == val.to_s
+    end
+
     def next
-      action_number = 1
+      action_number = IOAdapter.read
 
       return RenderError.new(AppContext.new(
-       valera: @app_context.valera,
-       actions_container: @app_context.actions_container,
-       prev_data: "Error action number #{action_number}."
-      )) unless action_number.is_a? Numeric
-
+          valera: @app_context.valera,
+          actions_container: @app_context.actions_container,
+          prev_data: Colorize.do(Colors::RED, "Error action number #{action_number}.")
+      )) unless is_number? action_number
+  
       menu_item = @menu.items[action_number.to_i]
 
       puts "#{menu_item.action} #{menu_item.title}"

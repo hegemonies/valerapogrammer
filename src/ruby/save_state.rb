@@ -9,12 +9,9 @@ module AppStates
 
     def next
       settings_filename = IOAdapter.read
-      return RenderError.new(AppContext.new(
-          valera: @app_context.valera,
-          actions_container: @app_context.actions_container,
-          prev_data: "Error: file - #{settings_filename}, does not exist."
-      )) unless File.exist? settings_filename
-      File.open(settings_filename, "w") { |file| file.write(valera.to_yaml) }
+      unless settings_filename.to_s.empty?
+        File.open("./resources/#{settings_filename}", "w") { |file| file.write(@app_context.valera.to_yaml) }
+      end
       build_next_state
     end
 
