@@ -2,14 +2,16 @@
 
 require './app_states'
 
-class GameOver < AppStates.Base
+module AppStates
+  class GameOver < Base
 
-  def render
-    IOAdapter.writeln 'It is a GAME OVER :('
+    def render
+      IOAdapter.writeln 'It is a GAME OVER :('
+    end
+
+    def next
+      exit
+    end
+
   end
-
-  def next
-    exit
-  end
-
 end

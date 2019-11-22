@@ -4,6 +4,8 @@ class Action
   attr_accessor :conds, :effects, :before_text, :after_text
 
   def initialize(conds: [], effects: [], before_text: '', after_text: '')
+    self.before_text = before_text
+    self.after_text = after_text
     self.conds = conds
     self.effects = effects
   end

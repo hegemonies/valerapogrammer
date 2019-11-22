@@ -16,7 +16,7 @@
       operator: '+'
       value: 10
     -
-      field: fun
+      field: cheerfulness
       operator: '+'
       value: 20
 -

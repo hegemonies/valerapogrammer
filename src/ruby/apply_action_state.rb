@@ -1,36 +1,39 @@
 # frozen_string_literal: true
 
-require '../v2/app_states'
+require './app_states'
 
-class ApplyAction < AppStates.Base
+module AppStates
+  class ApplyAction < Base
 
   def render
-    @app_context.actions_container.actions.effects.map do
+    @app_context.prev_data.effects.each do
       |ef| IOAdapter.writeln("#{ef.field} #{ef.operator} #{ef.value}")
     end
     @app_context.prev_data.execute @app_context.valera
     IOAdapter.writeln @app_context.prev_data.after_text
   end
 
-  def next
-    build_next_state
-  end
+    def next
+      build_next_state
+    end
 
-  private
+    private
 
-  def build_next_state
-    if @app_context.valera.died?
-      GameOver.new(AppContext.new(
-          valera: @app_context.valera,
-          actions_container: @app_context.actions_container,
-          prev_data: nil
-      ))
-    else
-      InputAction.new(AppContext.new(
-          valera: @app_context.valera,
-          actions_container: @app_context.actions_container,
-          prev_data: nil
-      ))
+    def build_next_state
+      if @app_context.valera.died?
+        GameOver.new(AppContext.new(
+            valera: @app_context.valera,
+            actions_container: @app_context.actions_container,
+            prev_data: nil
+        ))
+      else
+        InputAction.new(AppContext.new(
+            valera: @app_context.valera,
+            actions_container: @app_context.actions_container,
+            prev_data: nil
+        ))
+      end
     end
   end
+
 end

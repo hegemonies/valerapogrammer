@@ -11,6 +11,6 @@ class IOAdapter
   end
 
   def self.read
-    gets
+    gets.chomp
   end
 end

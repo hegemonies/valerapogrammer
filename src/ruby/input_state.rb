@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 require './app_states'
-require './app_states'
+require './load_state'
+require './save_state'
+require './apply_action_state'
 require './menu'
+require './render_error_state'
 
 module AppStates
   class InputAction < Base
@@ -13,20 +16,44 @@ module AppStates
 
     def render
       @menu.render
-      IOAdapter.write 'Select action:'
+      IOAdapter.write ':) '
     end
 
     def next
       action_number = IOAdapter.read
-      return RenderError.new(app_context) if number?(action_number)
-      menu_item = @menu[action_number.to_i]
-      return RenderError.new(app_context) if menu_item.present?
+
+      return RenderError.new(AppContext.new(
+       valera: @app_context.valera,
+       actions_container: @app_context.actions_container,
+       prev_data: "Error action number #{action_number}."
+      )) if action_number.is_a? Numeric
+
+      menu_item = @menu.items[action_number.to_i]
+
+      puts "#{menu_item.action} #{menu_item.title}"
+
+      return RenderError.new(AppContext.new(
+          valera: @app_context.valera,
+          actions_container: @app_context.actions_container,
+          prev_data: "Error: does not that action."
+      )) if menu_item.nil?
+
       build_next_state(menu_item.action)
     end
 
     private
 
     def build_next_state(action)
+      context = AppContext.new(
+          valera: app_context.valera,
+          actions_container: app_context.actions_container,
+          prev_data: action
+      )
+
+      if action == :LoadState
+
+      end
+
       if action.is_a?(Action)
         context = AppContext.new(
             valera: app_context.valera,
@@ -41,7 +68,7 @@ module AppStates
           ApplyAction.new(context)
         end
       else
-        "AppStates::#{action}".constantize
+        Object.const_get "AppStates::#{action}"
       end
     end
   end

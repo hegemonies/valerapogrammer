@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 require './action_container'
-require 'yaml'
 require './action'
+require './effect'
 require './conds'
+require 'yaml'
 
 class ConfigLoader
   def initialize(file)
@@ -26,7 +27,7 @@ class ConfigLoader
     Action.new after_text: data['after_text'],
                before_text: data['before_text'],
                conds: data['conds'].map { |cond| build_cond(cond) },
-               effects: data['effects'].map { |ef| build_cond(ef) }
+               effects: data['effects'].map { |ef| build_effect(ef) }
   end
 
   def build_cond(data)

@@ -15,15 +15,15 @@ class Menu
      .available_actions
      .map { |action| Item.new(action: action, title: action.before_text) }
      .concat([
-       Item.new(action: :Save, title: 'Save'),
-       Item.new(action: :Load, title: 'Load')
+       Item.new(action: :SaveState, title: 'Save'),
+       Item.new(action: :LoadState, title: 'Load')
      ])
   end
 
   def render
     render_valera_stats
     items.each_with_index do |item, index|
-      IOAdapter.write "[#{index}] #{item.title}"
+      IOAdapter.writeln "[#{index}] #{item.title}"
     end
   end
 
