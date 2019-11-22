@@ -20,13 +20,13 @@ module AppStates
     end
 
     def next
-      action_number = IOAdapter.read
+      action_number = 1
 
       return RenderError.new(AppContext.new(
        valera: @app_context.valera,
        actions_container: @app_context.actions_container,
        prev_data: "Error action number #{action_number}."
-      )) if action_number.is_a? Numeric
+      )) unless action_number.is_a? Numeric
 
       menu_item = @menu.items[action_number.to_i]
 
@@ -51,24 +51,11 @@ module AppStates
       )
 
       if action == :LoadState
-
-      end
-
-      if action.is_a?(Action)
-        context = AppContext.new(
-            valera: app_context.valera,
-            actions_container: app_context.actions_container,
-            prev_data: action
-        )
-        if action.is_a?(LoadState)
-          LoadState.new(context)
-        elsif action.is_a?(SaveState)
-          SaveState.new(context)
-        else
-          ApplyAction.new(context)
-        end
+        LoadState.new(context)
+      elsif action == :SaveState
+        SaveState.new(context)
       else
-        Object.const_get "AppStates::#{action}"
+        ApplyAction.new(context)
       end
     end
   end

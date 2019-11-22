@@ -12,7 +12,10 @@ class Application
                               actions_container: ConfigLoader.load('resources/config.yml'),
                               prev_data: nil)
     app_state = AppStates::InputAction.new(context)
-    unless app_state.app_context.valera.died?
+    while true
+      if app_state.app_context.valera.died?
+        break
+      end
       app_state.render
       app_state = app_state.next
     end
