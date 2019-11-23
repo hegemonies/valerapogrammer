@@ -12,12 +12,12 @@ class Menu
 
   def items
     @items ||= @app_context
-     .available_actions
-     .map { |action| Item.new(action: action, title: action.before_text) }
-     .concat([
-       Item.new(action: :SaveState, title: 'Save'),
-       Item.new(action: :LoadState, title: 'Load')
-     ])
+               .available_actions
+               .map { |action| Item.new(action: action, title: action.before_text) }
+               .concat([
+                         Item.new(action: :SaveState, title: 'Save'),
+                         Item.new(action: :LoadState, title: 'Load')
+                       ])
   end
 
   def render

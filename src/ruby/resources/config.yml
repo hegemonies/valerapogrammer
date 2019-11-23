@@ -21,7 +21,7 @@
       value: 20
 -
   before_text: Go to work
-  after_text: Borning routin
+  after_text: Borning routine
   conds:
     -
       field: mana
@@ -33,18 +33,18 @@
       value: 10
   effects:
     -
-      field: cheerfulness
-      operator: '-'
-      value: 5
-    -
-      field: mana
-      operator: '-'
-      value: 30
-    -
-      field: money
+      field: 'money'
       operator: '+'
-      value: 100
+      value: '100'
     -
-      field: fatigue
+      field: 'fatigue'
       operator: '+'
-      value: 70
+      value: '70'
+    -
+      field: 'cheerfulness'
+      operator: '-'
+      value: '5'
+    -
+      field: 'mana'
+      operator: '-'
+      value: '30'

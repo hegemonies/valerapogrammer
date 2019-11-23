@@ -16,6 +16,6 @@ class Action
   end
 
   def execute(valera)
-    effects.inject(valera) { |v, eff| eff.execute(v) }
+    effects.each { |ef| ef.execute(valera) }
   end
 end

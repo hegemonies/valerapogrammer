@@ -2,7 +2,6 @@
 
 module AppStates
   class RenderError < Base
-
     def render
       IOAdapter.writeln @app_context.prev_data
     end
@@ -15,11 +14,10 @@ module AppStates
 
     def build_next_state
       InputAction.new(AppContext.new(
-          valera: @app_context.valera,
-          actions_container: @app_context.actions_container,
-          prev_data: nil
-      ))
+                        valera: @app_context.valera,
+                        actions_container: @app_context.actions_container,
+                        prev_data: nil
+                      ))
     end
-
   end
 end

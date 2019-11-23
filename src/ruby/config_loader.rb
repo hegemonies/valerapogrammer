@@ -32,8 +32,8 @@ class ConfigLoader
 
   def build_cond(data)
     Action::Conds.new field: data['field'],
-                     operator: data['operator'],
-                     value: data['value']
+                      operator: data['operator'],
+                      value: data['value']
   end
 
   def build_effect(data)

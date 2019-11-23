@@ -8,10 +8,8 @@ module AppStates
       @app_context = app_context
     end
 
-    def render
-    end
+    def render; end
 
-    def next
-    end
+    def next; end
   end
 end

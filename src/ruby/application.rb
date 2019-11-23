@@ -9,15 +9,13 @@ require './input_state'
 class Application
   def run
     context = AppContext.new(valera: Valera.new,
-                              actions_container: ConfigLoader.load('resources/config.yml'),
-                              prev_data: nil)
+                             actions_container: ConfigLoader.load('resources/config.yml'),
+                             prev_data: nil)
     app_state = AppStates::InputAction.new(context)
-    while true
-      if app_state.app_context.valera.died?
-        break
-      end
+    loop do
       app_state.render
       app_state = app_state.next
+      break if app_state.app_context.valera.died?
     end
   end
 end
