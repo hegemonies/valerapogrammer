@@ -1,9 +1,0 @@
-image: meltwater/rspec
-
-stages:
-  - rspec
-
-rspec:
-  stage: rspec
-  script:
-    - rspec src/spec/*_spec.rb
