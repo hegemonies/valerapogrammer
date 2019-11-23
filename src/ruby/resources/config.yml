@@ -1,0 +1,50 @@
+-
+  before_text: Go to a pub
+  after_text: Cool party
+  conds:
+    -
+      field: money
+      operator: '>'
+      value: 10
+  effects:
+    -
+      field: money
+      operator: '-'
+      value: 10
+    -
+      field: mana
+      operator: '+'
+      value: 10
+    -
+      field: cheerfulness
+      operator: '+'
+      value: 20
+-
+  before_text: Go to work
+  after_text: Borning routine
+  conds:
+    -
+      field: mana
+      operator: '<'
+      value: 50
+    -
+      field: fatigue
+      operator: '<'
+      value: 10
+  effects:
+    -
+      field: 'money'
+      operator: '+'
+      value: '100'
+    -
+      field: 'fatigue'
+      operator: '+'
+      value: '70'
+    -
+      field: 'cheerfulness'
+      operator: '-'
+      value: '5'
+    -
+      field: 'mana'
+      operator: '-'
+      value: '30'

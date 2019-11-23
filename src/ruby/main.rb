@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-require './game'
+require './application'
 
 begin
-  game = Game.new
-  # todo: load settings
-  run_game = true
-  while run_game
-    run_game = game.next_step
-  end
+  Application.new.run
+rescue Exception => e
+  IOAdapter.writeln e.backtrace
+  IOAdapter.writeln e.message
+  IOAdapter.writeln "\n By-by"
 end
