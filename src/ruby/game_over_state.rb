@@ -9,7 +9,6 @@ module AppStates
     end
 
     def next
-      IOAdapter.writeln @app_context.prev_data
       exit
     end
   end

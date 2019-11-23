@@ -3,6 +3,6 @@
 # Valera gemfile
 source 'https://rubygems.org'
 
-gem 'rspec', '~> 3.6'
+gem 'spec', '~> 3.6'
 
 gem 'byebug'

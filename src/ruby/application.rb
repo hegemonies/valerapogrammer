@@ -5,6 +5,7 @@ require './valera'
 require './config_loader'
 require './app_states'
 require './input_state'
+require './game_over_state'
 
 class Application
   def run
@@ -15,7 +16,10 @@ class Application
     loop do
       app_state.render
       app_state = app_state.next
-      break if app_state.app_context.valera.died?
+      if app_state.app_context.valera.died?
+        IOAdapter.writeln 'Valera is dead :('
+        break
+      end
     end
   end
 end

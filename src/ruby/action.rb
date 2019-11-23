@@ -11,8 +11,12 @@ class Action
   end
 
   def valid?(valera)
-    conds.map { |c| c.valid?(valera) }
-         .inject(true) { |acc, el| acc && el }
+    if @conds != nil
+      conds.map { |c| c != nil ? c.valid?(valera) : true }
+          .inject(true) { |acc, el| acc && el }
+    else
+      true
+    end
   end
 
   def execute(valera)

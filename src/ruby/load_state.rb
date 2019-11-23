@@ -2,6 +2,7 @@
 
 require './app_states'
 require './check_valera_stats'
+require './valera'
 
 module AppStates
   class LoadState < Base
@@ -10,7 +11,7 @@ module AppStates
     end
 
     def next
-      settings_filename = "resources/#{IOAdapter.read}"
+      settings_filename = "./resources/#{IOAdapter.read}"
       unless File.exist? settings_filename
         return RenderError.new(AppContext.new(
                                  valera: @app_context.valera,
@@ -18,7 +19,7 @@ module AppStates
                                  prev_data: "Error: file - #{settings_filename}, does not exist."
                                ))
       end
-      build_next_step YAML.safe_load(File.read(settings_filename))
+      build_next_step YAML.load(File.read(settings_filename))
     end
 
     private

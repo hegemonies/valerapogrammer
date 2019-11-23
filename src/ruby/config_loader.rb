@@ -26,14 +26,16 @@ class ConfigLoader
   def build_action(data)
     Action.new after_text: data['after_text'],
                before_text: data['before_text'],
-               conds: data['conds'].map { |cond| build_cond(cond) },
+               conds: data['conds'] != nil ? data['conds'].map { |cond| build_cond(cond) } : nil ,
                effects: data['effects'].map { |ef| build_effect(ef) }
   end
 
   def build_cond(data)
-    Action::Conds.new field: data['field'],
-                      operator: data['operator'],
-                      value: data['value']
+    if data != nil
+      Action::Conds.new field: data['field'],
+                        operator: data['operator'],
+                        value: data['value']
+    end
   end
 
   def build_effect(data)
