@@ -12,6 +12,7 @@ class Action
 
     def execute(valera)
       eval("valera.#{@field}=valera.#{@field}#{@operator}#{@value}")
+      valera
     end
   end
 end
