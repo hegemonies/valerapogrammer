@@ -1,7 +1,7 @@
 
 require 'rspec'
-require '../conds.rb'
-require '../valera'
+require '../ruby/conds'
+require '../ruby/valera'
 
 describe Action::Conds do
   describe 'valid?' do

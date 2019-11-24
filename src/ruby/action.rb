@@ -12,7 +12,7 @@ class Action
 
   def valid?(valera)
     if @conds != nil
-      conds.map { |c| c != nil ? c.valid?(valera) : true }
+      @conds.map { |c| c != nil ? c.valid?(valera) : true }
           .inject(true) { |acc, el| acc && el }
     else
       true
