@@ -1,8 +1,9 @@
 
-require '../conds'
+require 'rspec'
+require '../conds.rb'
 require '../valera'
 
-describe Action::Cond do
+describe Action::Conds do
   describe 'valid?' do
     let(:cond) do
       Action::Conds.new field: :health, operator: :<, value: 50
